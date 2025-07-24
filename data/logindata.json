@@ -1,0 +1,32 @@
+{
+    "accounts": [
+        {
+            "username": "root",
+            "password": "c9cf91d1ce38905aa68034362be04438",
+            "salt":"HkHg9Uqr",
+            "level": 1,
+            "index": 0
+        },
+        {
+            "username": "dev",
+            "password": "0c5ff63852d7d09321cf90e774748ff6",
+            "salt":"OC36R8k3v0GOknD",
+            "level": 2,
+            "index": 1
+        },
+        {
+            "username": "user",
+            "password": "95de16f6d576a6e63535c70aca456758",
+            "salt":"4W9Lyya65xV7",
+            "level": 3,
+            "index": 2
+        },
+        {
+            "username": "test",
+            "password": "0553c5ed63f6fc2a571a4cdcfda3e8aa",
+            "salt":"Cw3mkaLsCB4xnlR",
+            "level": 3,
+            "index": 3
+        }
+    ]
+}
