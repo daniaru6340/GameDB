@@ -2,7 +2,7 @@
 
 ## Description
 
-This application is build to ease archiving the game names and their info in an universal manner. This application saves all the data in a JSON file caled info.json. Furthermore there is an logindata.json file which contains all the login details. I already know its not as secure as keeping it in a database. However this file contains hashed passwords which is moderate amount of security for this small of an application which doesnt rely on an internet connection.
+This application is build to ease archiving the game names and their info in an universal manner. This application saves all the data in a JSON file called info.json. Furthermore there is an logindata.json file which contains all the login details. I already know its not as secure as keeping it in a database. However this file contains hashed passwords which is moderate amount of security for this small of an application which doesnt rely on an internet connection.
 
 ## Compilation & Usage
 
