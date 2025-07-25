@@ -2,7 +2,7 @@
 
 ## Description
 
-This application is build to ease archiving the game names and their info in an universal manner. This application saves all the data in a JSON file called info.json. Furthermore there is an logindata.json file which contains all the login details. I already know its not as secure as keeping it in a database. However this file contains hashed passwords which is moderate amount of security for this small of an application which doesnt rely on an internet connection.
+This application is build to ease archiving the game names and their info in an universal manner. This application saves all the data in a JSON file called info.json. Furthermore there is an logindata.json file which contains all the login details. I already know its not as secure as keeping it in a database. However this file contains hashed passwords which is moderate amount of security for this small of an application which doesn't rely on an internet connection.
 
 ## Compilation & Usage
 
@@ -45,4 +45,7 @@ cd output/bin && ./GameDB
 
 Im sorry that there is no native windows version however you could run the program using wsl, cygwin, msys, or any other linux terminal emulators.
 
-if you dont wish to go through the hassle of porting the application for windows you may download the port i have created using msys2. [Click here](https://bit.ly/GameDBwindowsport) to download the installer. If that does not work try [this.](https://bit.ly/44KI9Vt)
+if you dont wish to go through the hassle of porting the application for windows you may download the port i have created using msys2. [Click here](https://bit.ly/GameDBwindowsport) to download the installer. If that does not work try the links below
+- [Link 2](https://bit.ly/44KI9Vt)
+- [Link 3](https://bit.ly/4faEh3C)
+- [Link 4](https://bit.ly/40zRE7q)
