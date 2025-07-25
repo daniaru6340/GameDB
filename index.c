@@ -13,7 +13,6 @@
 
 #define KEY_ESC 27
 #define ARRAY_SIZE(a) (sizeof(a) / sizeof(a[0]))
-// #define CTRLD 4
 #define BUFF_SIZE 4096
 
 int userindex = 0;
@@ -43,9 +42,12 @@ char *hash(char *passwd, char *salt)
     EVP_MD_CTX *mdctx;
     unsigned char md_value[EVP_MAX_MD_SIZE];
 
-    char *input = malloc(strlen(salt) + strlen(passwd) + 1);
+    char *input = NULL;
+    input = calloc((strlen(salt) + strlen(passwd) + 1), 1);
     sprintf(input, "%s%s", salt, passwd);
-    char *output = malloc(129);
+
+    char *output = NULL;
+    output = calloc(129, 1);
 
     mdctx = EVP_MD_CTX_new();
     const EVP_MD *EVP_md5();
@@ -56,11 +58,10 @@ char *hash(char *passwd, char *salt)
 
     for (i = 0; i < md_len; i++)
     {
-
-        sprintf(output, "%s%02x", output, md_value[i]);
+        char temp[3];
+        sprintf(temp, "%02x", md_value[i]);
+        strcat(output, temp);
     }
-
-    // printw(" %s\n", input);
 
     EVP_MD_CTX_free(mdctx);
     free(input);
@@ -111,13 +112,16 @@ int login(char *username, char *password)
         cJSON *fsalt = cJSON_GetObjectItemCaseSensitive(account, "salt");
         cJSON *flvl = cJSON_GetObjectItemCaseSensitive(account, "level");
 
-        char *passwd = hash(password, fsalt->valuestring);
+        char *passwd = NULL;
+        passwd = hash(password, fsalt->valuestring);
+        
 
         if ((cJSON_IsString(fuser)) && (fuser->valuestring != NULL))
         {
-            if ((strcmp(username, fuser->valuestring) == 0) && (strcmp(passwd, fpass->valuestring)) == 0)
+            int match = strcmp(fuser->valuestring, username) == 0 && strcmp(passwd, fpass->valuestring) == 0;
+            if (match)
             {
-
+                
                 status = flvl->valueint;
             }
             else
@@ -990,8 +994,8 @@ int main(int argc, char *argv[])
     srand((unsigned int)time(NULL));
 
     // login details
-    char *user = malloc(100 * sizeof(char));
-    char *pass = malloc(100 * sizeof(char));
+    char *user = user = malloc(100 * sizeof(char));
+    char *pass = pass = malloc(100 * sizeof(char));
     size_t len = 0;
 
     // ncurses aka tui
@@ -1019,6 +1023,7 @@ int main(int argc, char *argv[])
 
     starty = (LINES - height) / 2;
     startx = (COLS - width) / 2;
+    clear();
     printw("press esc to exit");
     refresh();
 
@@ -1034,7 +1039,6 @@ int main(int argc, char *argv[])
 
         mvwprintw(app_win, 4, 8, "\n\tUsername: ");
         wrefresh(app_win);
-
         wgetnstr(app_win, user, 99);
 
         wrefresh(app_win);
@@ -1056,7 +1060,7 @@ int main(int argc, char *argv[])
 
             wclear(app_win);
             box(app_win, 0, 0);
-            mvwprintw(app_win, 2, 1, "\n\tLogin incorrect");
+            mvwprintw(app_win, 2, 1,"\n\tLogin incorrect");
             wrefresh(app_win);
         }
         else if (userindex >= 1)
